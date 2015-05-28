@@ -1,5 +1,5 @@
-name: Make My Node
-description : Create a content with a module.
-package: Epicodus Example
-core: 7.x
-files[]: makemynode.module
+name= Make My Node
+description = Create a content with a module.
+package= Epicodus Example
+core= 7.x
+files[]= makemynode.module

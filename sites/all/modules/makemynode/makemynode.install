@@ -1,0 +1,32 @@
+<?php
+
+function makemynode_enable() {
+    drupal_set_message($message = t('The makemynode module was successfully enabled.'), $type = 'status');
+    $node = new stdClass();
+    $node->type = "page";
+    $node->title = "Your title goes here";
+    $node->language = LANGUAGE_NONE;
+    $node->path = array('alias' => 'your-node-path');
+    node_object_prepare($node);
+    $node->uid = 1;
+
+    $node->body[$node->language][0]['value'] = 'This is a body text';
+    $node->body[$node->language][0]['summary'] = 'Here goes a summary';
+    $node->body[$node->language][0]['format'] = 'filtered_html';
+    $node = node_submit($node);
+    node_save($node);
+     $_SESSION['node'] = $node;
+
+
+
+}
+
+
+
+function makemynode_disable() {
+     drupal_set_message($message = t('Your module was disabled'), $type = 'status');
+     $node_id = $_SESSION['node']->nid;
+     node_delete($node_id);
+
+
+}

@@ -1,16 +1,1 @@
-<?php
 
-function makemynode_enable() {
-    drupal_set_message($message = t('The yourmodulename module was successfully enabled.'), $type = 'status');
-    $node = new stdClass();
-    $node->type = "page";
-    $node->title = "Your title goes here";
-    $node->language = LANGUAGE_NONE;
-    $node->path = array('alias' => 'your-node-path');
-    node_object_prepare($node);
-    $node->uid = 1;
-
-    $node->body[$node->language][0]['value'] = 'This is a body text';
-    $node->body[$node->language][0]['summary'] = 'Here goes a summary';
-    
-}
